@@ -11,14 +11,14 @@
 [ "$1" != "" ] && dir="$1" || dir="/usr/local/sdm"
 
 #src="https://github.com/gitbls/sdm/raw/master"
-src="https://raw.githubusercontent.com/gitbls/sdm/master"
+src="https://raw.githubusercontent.com/edespino/sdm/master"
 [ "$dir" == "/usr/local/sdm" ] && sudo="sudo" || sudo=""
 
 $sudo mkdir -p $dir $dir/1piboot
 
 for f in sdm sdm-phase0 sdm-phase1 sdm-cparse \
 	     sdm-firstboot sdm-apt-cacher sdm-apt \
-	     sdm-customphase sdm-apps-example sdm-xapps-example \
+	     sdm-customphase sdm-apps \
 	     1piboot/1piboot.conf \
 	     1piboot/010-disable-triggerhappy.sh \
 	     1piboot/030-disable-rsyslog.sh
@@ -28,7 +28,7 @@ do
 done
 
 $sudo chmod -R 755 $dir/*
-$sudo chmod 644 $dir/{sdm-apps-example,sdm-xapps-example} $dir/1piboot/1piboot.conf
+$sudo chmod 644 $dir/sdm-apps $dir/1piboot/1piboot.conf
 
 if [ "$dir" == "/usr/local/sdm" ]
 then
@@ -50,5 +50,3 @@ else
     echo "   or move the contents of '$dir' to /usr/local/sdm"
     [ "$(which systemd-nspawn)" == "" ]  && echo "" && echo "AND  'sudo apt install systemd-container --no-install-recommends'"
 fi
-
-

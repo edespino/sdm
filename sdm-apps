@@ -1,0 +1,10 @@
+# This file lists all the apps you want installed into your system IMG by sdm
+# A line can be
+#              A blank line
+#              Comment line (everything following # is ignored)
+#              The name of a single package
+#
+
+# Some editors
+vim
+emacs
